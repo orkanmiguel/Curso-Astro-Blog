@@ -4,7 +4,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import { siteConfig } from "../config/config.site-config";
 import TypedBlogPost from "src/components/typedBlogPost.astro";
 
-const blogPosts = await getCollection('blog');
+const blogPosts = await getCollection('blog', (post)=> post.data.isDraft === false);
 console.log(blogPosts)
 
 
@@ -16,7 +16,8 @@ console.log(blogPosts)
 	<h1 class="text-9xl
 	text-white">{siteConfig.title}</h1>
 
-    <a href="/blog/1">Blog Paginado</a>
+    <a class="mr-2" href="/blog/1">Blog Paginado</a>
+    <a class="mr-2" href="/authors">Autores</a>
 
 	<!-- component -->
 <section class="text-white dark:bg-gray-900">
